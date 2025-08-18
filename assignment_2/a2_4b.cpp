@@ -11,10 +11,10 @@ int main() {
         size++;
     }
 
-    for (int left = 0, right = size - 1; left < right; left++, right--) {
+    for (int left = 0;left < (size - 1); left++, right--) {
         char swapper = text[left];
-        text[left] = text[right];
-        text[right] = swapper;
+        text[left] = text[size - 1];
+        text[size - 1] = swapper;
     }
 
     cout << "Reversed string: " << text;
