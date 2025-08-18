@@ -11,9 +11,9 @@ int main() {
         len++;
     }
 
-    for (int pass = 0; pass < len - 1; pass++) {
-        for (int idx = 0; idx < len - pass - 1; idx++) {
-            if (text[idx] > text[idx + 1]) {
-                char swapper = text[idx];
-                text[idx] = text[idx + 1];
-                text[idx + 1] = swapper;
+    for (int j= 0; j < len - 1; j++) {
+        for (int i = 0; i < len - j - 1; i++) {
+            if (text[i] > text[i + 1]) {
+                char swapper = text[i];
+                text[i] = text[i + 1];
+                text[i + 1] = swapper;
