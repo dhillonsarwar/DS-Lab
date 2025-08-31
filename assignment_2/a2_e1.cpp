@@ -1,41 +1,39 @@
-//e1
-#include <iostream>
+#include<iostream>
 using namespace std;
-
-int findPairs(int nums[], int diff, int size)
-{
-    int pairCount = 0;
-
-    for (int idx = 0; idx < size - 1; idx++)
-    {
-        for (int next = idx + 1; next < size; next++)
-        {
-            if (abs(nums[next] - nums[idx]) == diff)
-            {
-                pairCount++;
+int * arrcreate(int n){
+    int *arr = new int[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+        
+    }return arr;
+    
+}
+int paircheck(int *arr,int n){
+    int pair=0,k;
+    cout<<"Enter the difference value: ";
+    cin>>k;
+    bool flag=false;
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            if(arr[i]-arr[j]==k){
+                pair++;
+                flag=true;
             }
         }
     }
-    return pairCount;
-}
-
-int main()
-{
-    cout << "Enter array length: ";
-    int len;
-    cin >> len;
-    int numbers[len];
-    cout << "Enter the elements:" << endl;
-
-    for (int i = 0; i < len; i++)
-    {
-        cin >> numbers[i];
+    if(!flag){
+        cout<<"No. of pairs found is ";return 0;
     }
-    int target;
-    cout << "Enter target difference: ";
-    cin >> target;
-    int result = findPairs(numbers, target, len);
-    cout << "Number of valid pairs: " << result << endl;
-
+    else{
+        cout<<"No. of pairs found is ";
+    return pair;}
+}
+int main(){
+    int n;
+    cout<<"Enter the size of array: ";
+    cin>>n;
+    int *arr=arrcreate(n);
+cout<<paircheck(arr,n)<<endl;
+    
     return 0;
 }
