@@ -1,52 +1,27 @@
 #include <iostream>
+#include<algorithm>
 using namespace std;
+bool ana=false;
+void anacheck(string s,string r){ana=false;
+    sort(s.begin(),s.end());
+    sort(r.begin(),r.end());
+    if(s==r){ana=true;
+    
+}}
+int main() {int n;
+cout<<"Enter number of test cases:";
+cin>>n;
+ cin.ignore();
+for(int i=0;i<n;i++){
+    string s1,s2;
+    cout<<"Enter String 1 ";
+   
+    getline(cin,s1);
+    cout<<"Enter String 2 ";
+    getline(cin,s2);
+    anacheck(s1,s2);
+    if(ana){cout<<"YES"<<endl;}
+    else {cout<<"NO"<<endl;}}
+	
 
-int main()
-{
-    char str1[20], str2[20];
-    int hash[26] = {0};
-    cout << "Enter string 1: ";
-    cin >> str1;
-    cout << "Enter string 2: ";
-    cin >> str2;
-
-    int n1 = 0, n2 = 0;
-
-    for (int i = 0, j = 0; str1[i] != '\0' && str2[j] != '\0'; j++, i++)
-    {
-        hash[str1[i] - 'a']++;
-        hash[str2[i] - 'a']--;
-        n1++;
-        n2++;
-    }
-
-    bool flag = true;
-
-    if (n1 == n2)
-    {
-        for (int i = 0; i < 26; i++)
-        {
-            if (hash[i] != 0)
-            {
-                flag = false;
-                break;
-            }
-        }
-    }
-
-    else
-    {
-        cout << "Not anagram";
-        return 0;
-    }
-    if (flag)
-    {
-        cout << "Anagram";
-    }
-    else
-    {
-        cout << "not anagram";
-    }
-
-    return 0;
 }
