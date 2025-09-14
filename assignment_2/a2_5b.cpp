@@ -2,8 +2,8 @@
 using namespace std;
 int* getArray(int size) {
     int* arr = new int[size];
-    cout << "Enter " << size*(size+1)/2 << " elements: ";
-    for (int i = 0; i < size*(size+1)/2; i++) {
+    cout << "Enter " << 3*size-2 << " elements: ";
+    for (int i = 0; i < 3*size-2 ; i++) {
         cin>>arr[i];
     }
     return arr;
@@ -14,15 +14,18 @@ int main (){
     int n;
     cin>>n;
     int* arr = getArray(n);
-    cout << "The upper triangular matrix is:" << endl;
     for(int i = 0; i < n; i++) {
        for(int j = 0; j < n; j++) {
-           if(i<=j) {
-               cout << arr[k++] << " ";
-               
-           } else {
+        
+           if(((i-j)==1)||((j-i)==1)||(i==j)) { 
+           while(k<3*n-2) {
+               cout << arr[k] << " ";
+               k++;
+               break;
+           }}
+            else {
                cout << "0 ";
-           }
-        }
+           }}
+        
         cout << endl;
     }}

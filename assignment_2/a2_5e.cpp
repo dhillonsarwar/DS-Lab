@@ -9,20 +9,21 @@ int* getArray(int size) {
     return arr;
 }
 int main (){
-    int k = 0;
+    int k = 0,l=0;
     cout<<"Enter the order of matrix: ";
     int n;
     cin>>n;
     int* arr = getArray(n);
-    cout << "The upper triangular matrix is:" << endl;
+    cout << "The Symmetric triangular matrix is:" << endl;
     for(int i = 0; i < n; i++) {
        for(int j = 0; j < n; j++) {
-           if(i<=j) {
+           if(i>=j) {
                cout << arr[k++] << " ";
-               
            } else {
-               cout << "0 ";
+               
+               cout << arr[j*(j+1)/2+i] << " ";
+               }
            }
-        }
+        
         cout << endl;
     }}

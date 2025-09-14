@@ -14,12 +14,11 @@ int main (){
     int n;
     cin>>n;
     int* arr = getArray(n);
-    cout << "The upper triangular matrix is:" << endl;
+    cout << "The lower triangular matrix is:" << endl;
     for(int i = 0; i < n; i++) {
        for(int j = 0; j < n; j++) {
-           if(i<=j) {
+           if(i>=j) {
                cout << arr[k++] << " ";
-               
            } else {
                cout << "0 ";
            }
