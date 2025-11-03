@@ -8,27 +8,30 @@ public:
     Node(int x) { data = x; next = nullptr; prev = nullptr; }
 };
 
-Node* reverseInGroups(Node* head, int k) {
-    if (!head) return head;
-    Node *curr = head, *newHead = nullptr, *tail = nullptr;
-    while (curr) {
-        Node *groupHead = curr, *prev = nullptr, *next = nullptr;
+   Node* reverseInGroups(Node* head, int k) {
+        if (!head) return nullptr;
+
+        Node *curr = head, *next = nullptr, *prev = nullptr;
         int count = 0;
+
+        
         while (curr && count < k) {
             next = curr->next;
             curr->next = prev;
-            curr->prev = nullptr;
-            if (prev) prev->prev = curr;
+            curr->prev = next;  
             prev = curr;
             curr = next;
             count++;
         }
-        if (!newHead) newHead = prev;
-        if (tail) { tail->next = prev; prev->prev = tail; }
-        tail = groupHead;
-    }
-    return newHead;
-}
+
+       
+        if (next) {
+            head->next = reverseInGroups(next, k);
+            if (head->next)
+                head->next->prev = head;
+        }
+
+        return prev; }
 
 void printList(Node* head) {
     while (head) {
