@@ -8,24 +8,18 @@ public:
     Node(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
-bool small(Node* root, Node* L) {
-    if (!L) return true;
-    return (L->data < root->data) && small(root, L->left) && small(root, L->right);
-}
 
-bool large(Node* root, Node* R) {
-    if (!R) return true;
-    return (R->data > root->data) && large(root, R->left) && large(root, R->right);
-}
-
-bool isBST(Node* root) {
-    if (!root) return true;
-    if (small(root, root->left) && large(root, root->right))
-        return isBST(root->left) && isBST(root->right);
-    else
-        return false;
-}
-
+    bool isValidBS(TreeNode* root, long min, long max) {
+        if (!root)
+            return true;
+        if (root->val >= max || root->val <= min)
+            return false;
+        return isValidBS(root->left, min, root->val) &&
+               isValidBS(root->right, root->val, max);
+    }
+    bool isValidBST(TreeNode* root) {
+        return isValidBS(root, LONG_MIN, LONG_MAX);
+ =}
 int main() {
     Node* root = new Node(4);
     root->left = new Node(2);
@@ -35,7 +29,7 @@ int main() {
     root->right->left = new Node(5);
     root->right->right = new Node(7);
 
-    if (isBST(root))
+    if (isValidBST(root))
         cout << "This is a BST." << endl;
     else
         cout << "This is NOT a BST." << endl;
